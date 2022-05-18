@@ -1,9 +1,14 @@
 
 <?php
+$locationLib="C:\Users\ZORLU\Downloads\\";
 if(isset($_POST['submit']))
 {
-    $file=realpath($_FILES['Videos']['tmp_name']);
-    $time = exec("$ffmpeg -i ".$file." 2>&1 | grep Duration | cut -d ' ' -f 4 | sed s/,//");
-    var_dump($_FILES);
+
+    $file=$_FILES['Videos']['name'];
+    $temp=exec("ffmpeg -i ".$locationLib.$file." 2>&1 | findstr Duration");
+    echo "ffmpeg -i ".$locationLib.$file." 2>&1 | findstr Duration"."<br>";
+    var_dump($temp);
 }
+
+
 ?>
